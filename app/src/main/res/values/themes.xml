@@ -13,4 +13,20 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="button_num">
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">numberAction</item>
+    </style>
+
+    <style name="button_operation">
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">operationAction</item>
+    </style>
 </resources>
