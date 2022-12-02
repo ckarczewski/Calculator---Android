@@ -15,7 +15,7 @@
     <string name="clear">C/CE</string>
     <string name="ok">AE</string>
     <string name="multiply">x</string>
-    <string name="divide">÷</string>
+    <string name="divide">/</string>
     <string name="add">+</string>
     <string name="subtract">-</string>
     <string name="equals">=</string>
