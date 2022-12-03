@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 //    private val display: TextView = findViewById(R.id.textView)
     lateinit var display :TextView
     private var canOperation = false
-    private var canDecimal = true
+    private var canDecimal = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         if (view is Button && canOperation) {
             display.append(view.text)
             canOperation = false
-            canDecimal = true
+            canDecimal = false
         }
     }
 
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
     fun equalBtn(view: View) {
         display = findViewById(R.id.textView)
         display.text = calculateResult()
+        canOperation = true
     }
 //log.i
     private fun calculateResult(): String{
