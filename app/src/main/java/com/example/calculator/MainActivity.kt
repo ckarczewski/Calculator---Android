@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
 //    private val display: TextView = findViewById(R.id.textView)
     lateinit var display :TextView
+//    after open calculator
     private var canOperation = false
     private var canDecimal = false
 
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         display = findViewById(R.id.textView)
         if (view is Button && canOperation) {
             display.append(view.text)
+//            after add operation sign
             canOperation = false
             canDecimal = false
         }
