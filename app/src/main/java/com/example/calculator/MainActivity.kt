@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var display :TextView
 //    after open calculator
     private var canOperation = false
-    private var canDecimal = false
+    private var canDecimal = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             display.append(view.text)
 //            after add operation sign
             canOperation = false
-            canDecimal = false
+            canDecimal = true
         }
     }
 
@@ -63,12 +63,15 @@ class MainActivity : AppCompatActivity() {
         display = findViewById(R.id.textView)
 
         display.text = ""
+        canDecimal = true
+        canOperation = false
     }
 
     fun equalBtn(view: View) {
         display = findViewById(R.id.textView)
         display.text = calculateResult()
         canOperation = true
+        canDecimal = false
     }
 //log.i
     private fun calculateResult(): String{
@@ -81,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         val result = addSubtractCalculate(timeDivision)
         return result.toString()
     }
+
     private fun addSubtractCalculate(passedList: MutableList<Any>): Float{
         var result = passedList[0] as Float
 
@@ -106,6 +110,7 @@ class MainActivity : AppCompatActivity() {
         }
         return list
     }
+
     private fun calcTimeDiv(passedList: MutableList<Any>):MutableList<Any>{
         val newList = mutableListOf<Any>()
         var restartIndex = passedList.size
@@ -144,7 +149,9 @@ class MainActivity : AppCompatActivity() {
             if (character.isDigit() || character == '.'){ //make decimal
                 currentDigit += character
             } else {
-                list.add(currentDigit.toFloat())
+                if (currentDigit != ""){
+                    list.add(currentDigit.toFloat())
+                }
                 currentDigit = ""
                 list.add(character)
             }

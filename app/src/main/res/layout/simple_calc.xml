@@ -36,7 +36,8 @@
             <Button
                 android:id="@+id/button19"
                 style="@style/button_operation"
-                android:text="@string/plus_minus" />
+                android:text="@string/plus_minus"
+                tools:ignore="UsingOnClickInXml"/>
         </TableRow>
 
         <TableRow
