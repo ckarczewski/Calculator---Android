@@ -23,4 +23,5 @@
     <string name="plus_minus">+/-</string>
 
     <string name="display"></string>
+    <string name="displayResult"></string>
 </resources>

@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.util.Log
 
 
 class MainActivity : AppCompatActivity() {
 
 //    private val display: TextView = findViewById(R.id.textView)
     lateinit var display :TextView
+    lateinit var displayResult: TextView
 //    after open calculator
     private var canOperation = false
     private var canDecimal = true
@@ -55,6 +57,10 @@ class MainActivity : AppCompatActivity() {
         display = findViewById(R.id.textView)
         val length = display.length()
         if (length > 0) {
+            if (display.text.get(length-1) == '.'){
+                println("found dot lol !!!")
+                canDecimal = true
+            }
             display.text = display.text.subSequence(0, length - 1)
         }
     }
@@ -69,9 +75,13 @@ class MainActivity : AppCompatActivity() {
 
     fun equalBtn(view: View) {
         display = findViewById(R.id.textView)
-        display.text = calculateResult()
-        canOperation = true
-        canDecimal = false
+        val length = display.length()
+        if (length > 0) {
+            display.text = calculateResult()
+            canOperation = true
+            canDecimal = false
+        }
+
     }
 //log.i
     private fun calculateResult(): String{
@@ -86,8 +96,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addSubtractCalculate(passedList: MutableList<Any>): Float{
-        var result = passedList[0] as Float
+        var result = 0.0f as Float
+        if (passedList[0] == '-') {
+            passedList[1] = passedList[1] as Float * (-1)
+            passedList.removeAt(0)
+            result = passedList[0] as Float
+        } else {
+            result = passedList[0] as Float
+        }
 
+
+//        var result = passedList[0] as Float
+        println(result)
+        println(passedList)
         for (i in passedList.indices){
             if (passedList[i] is Char && i != passedList.lastIndex){
                 val operator = passedList[i]
@@ -114,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     private fun calcTimeDiv(passedList: MutableList<Any>):MutableList<Any>{
         val newList = mutableListOf<Any>()
         var restartIndex = passedList.size
-
+        println(passedList)
         for (i in passedList.indices){
             if (passedList[i] is Char && i != passedList.lastIndex && i < restartIndex){
                 val operator = passedList[i]
