@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             display.append(view.text)
 //            after add operation sign
             canOperation = false
+            println("zmienilem flage decimal na false")
             canDecimal = true
         }
     }
