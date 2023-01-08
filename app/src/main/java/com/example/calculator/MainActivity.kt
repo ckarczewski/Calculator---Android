@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 clearNumFlag = false
             }
             if (view.text == "."){
-                if (canDecimal) { display.append(view.text) }
+                if (canDecimal || numberOneSave) { display.append(view.text) }
                 canDecimal = false
             } else {
                 display.append(view.text)
@@ -106,9 +106,46 @@ class MainActivity : AppCompatActivity() {
             if (character.isDigit() || character == '.'){ //make decimal
                 currentSign += character
             }
+            println("CURRENT SIGN KURWA")
+            println(currentSign)
         }
         number = currentSign.toDouble()
         return number
+    }
+    fun equalBtn(view: View) {
+        displaySign = findViewById(R.id.textView2)
+        display = findViewById(R.id.textView)
+
+        val isSignChosen = displaySign.length()
+        if (isSignChosen > 0) {
+            displaySign.text = ""
+            numberTwo = digitsOperators()
+            display.text = ""
+            display.text = calculateResult()
+            numberOneSave = false
+            canDecimal = false
+        }
+
+    }
+
+    private fun calculateResult(): String{
+        var result = 0.0
+        when (signOperator){
+            "x" -> {
+                result = numberOne * numberTwo
+            }
+            "/" -> {
+                result = numberOne / numberTwo
+            }
+            "+" -> {
+                result = numberOne + numberTwo
+            }
+            "-" -> {
+                result = numberOne - numberTwo
+            }
+        }
+
+        return result.toString()
     }
 //    fun numberAction(view: View) {
 //        display = findViewById(R.id.textView)
