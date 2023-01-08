@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     fun numberAction(view: View) {
         displaySign = findViewById(R.id.textView2)
         display = findViewById(R.id.textView)
-        val length = display.length()
+
         if (view is Button) {
             if (errorFlag){
                 display.text = ""
@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         if (view is Button && errorFlag){
             display.text = ""
+            canDecimal = true
             errorFlag = false
         }
 
@@ -85,10 +86,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun operationSpecial(view: View) {
+        display = findViewById(R.id.textView)
+        if (view is Button && errorFlag){
+            display.text = ""
+            canDecimal = true
+            errorFlag = false
+        }
+        var result = ""
+        val mainDisplayLength = display.length()
+        if (view is Button && mainDisplayLength > 0) {
+            when (view.text){
+                "+/-" -> {
+                    result = negativeNumber().toString()
+                }
+                "+" -> {
+                    result = "dwa"
+                }
+                "-" -> {
+                    result = "trzy"
+                }
+            }
+            display.text = result
+        }
+    }
+
     fun clearBtn(view: View) {
         display = findViewById(R.id.textView)
         if (errorFlag) {
             display.text = ""
+            canDecimal = true
             errorFlag = false
         }
         val length = display.length()
@@ -118,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         var number = 0.0
         var currentSign = ""
         for(character in display.text){
-            if (character.isDigit() || character == '.'){ //make decimal
+            if (character.isDigit() || character == '.' || character == '-'){ //make decimal
                 currentSign += character
             }
             println("CURRENT SIGN KURWA")
@@ -170,6 +197,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         return result.toString()
+    }
+
+    private fun negativeNumber(): Double {
+        val number = digitsOperators()
+        return number * (-1)
     }
 //    fun numberAction(view: View) {
 //        display = findViewById(R.id.textView)
