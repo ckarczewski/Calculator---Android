@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var display :TextView
     lateinit var displaySign :TextView
 //    after open calculator
-    private var canOperation = false
     private var canDecimal = true
 
 
@@ -25,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private var signOperator = ""
     private var clearNumFlag = false
+
+    private var errorFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         display = findViewById(R.id.textView)
         val length = display.length()
         if (view is Button) {
+            if (errorFlag){
+                display.text = ""
+                errorFlag = false
+            }
             if (clearNumFlag) {
                 display.text = ""
                 clearNumFlag = false
@@ -59,6 +64,12 @@ class MainActivity : AppCompatActivity() {
     fun operationAction(view: View) {
         displaySign = findViewById(R.id.textView2)
         display = findViewById(R.id.textView)
+
+        if (view is Button && errorFlag){
+            display.text = ""
+            errorFlag = false
+        }
+
         val mainDisplayLength = display.length()
         if (view is Button && mainDisplayLength > 0 && !numberOneSave) {
             displaySign.text = ""
@@ -76,6 +87,10 @@ class MainActivity : AppCompatActivity() {
 
     fun clearBtn(view: View) {
         display = findViewById(R.id.textView)
+        if (errorFlag) {
+            display.text = ""
+            errorFlag = false
+        }
         val length = display.length()
         if (length > 0) {
             if (display.text.get(length-1) == '.'){
@@ -95,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         numberOneSave = false
         clearNumFlag = false
         canDecimal = true
-        canOperation = false
+        errorFlag = false
     }
 
     private fun digitsOperators(): Double{
@@ -108,6 +123,9 @@ class MainActivity : AppCompatActivity() {
             }
             println("CURRENT SIGN KURWA")
             println(currentSign)
+        }
+        if (currentSign == "."){
+            currentSign = "0.0"
         }
         number = currentSign.toDouble()
         return number
@@ -135,7 +153,13 @@ class MainActivity : AppCompatActivity() {
                 result = numberOne * numberTwo
             }
             "/" -> {
-                result = numberOne / numberTwo
+                if (numberTwo == 0.0){
+                    errorFlag = true
+                    return "Error"
+                } else {
+                    result = numberOne / numberTwo
+                }
+
             }
             "+" -> {
                 result = numberOne + numberTwo
