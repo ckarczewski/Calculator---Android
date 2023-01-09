@@ -22,6 +22,17 @@
     <string name="point">.</string>
     <string name="plus_minus">+/-</string>
 
+    <string name="tan">tan</string>
+    <string name="cos">cos</string>
+    <string name="sin">sin</string>
+    <string name="precent">%</string>
+    <string name="log">log</string>
+    <string name="ln">ln</string>
+    <string name="sqrt">√</string>
+    <string name="squared">x²</string>
+    <string name="expo">xⁿ</string>
+
+
     <string name="display"></string>
     <string name="displaySign"></string>
 </resources>
