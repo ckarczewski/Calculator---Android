@@ -32,9 +32,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.menu)
 
         val buttonSimp: Button = findViewById(R.id.simple_calc)
+        val buttonAdv: Button = findViewById(R.id.adv_calc)
 
         buttonSimp.setOnClickListener() {
             setContentView(R.layout.simple_calc)
+        }
+
+        buttonAdv.setOnClickListener() {
+            setContentView(R.layout.advanced_calc)
         }
 
     }
@@ -200,6 +205,51 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun negativeNumber(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun sine(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun cosine(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun tangent(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun logarithm(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun naturalLogarithm(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun precent(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun square(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun element(): Double {
+        val number = digitsOperators()
+        return number * (-1)
+    }
+
+    private fun expo(): Double {
         val number = digitsOperators()
         return number * (-1)
     }
