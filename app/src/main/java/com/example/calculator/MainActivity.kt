@@ -1,11 +1,13 @@
 package com.example.calculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.util.Log
+import kotlin.math.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,19 +31,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.menu)
+        setContentView(R.layout.advanced_calc)
 
-        val buttonSimp: Button = findViewById(R.id.simple_calc)
-        val buttonAdv: Button = findViewById(R.id.adv_calc)
+        val buttonBack: Button = findViewById((R.id.back))
 
-        buttonSimp.setOnClickListener() {
-            setContentView(R.layout.simple_calc)
+        buttonBack.setOnClickListener() {
+            val intent = Intent(this, Menu::class.java)
+            startActivity(intent)
+//            setContentView(R.layout.menu)
         }
 
-        buttonAdv.setOnClickListener() {
-            setContentView(R.layout.advanced_calc)
-        }
+    }
+    fun goBack(view: View){
+        val buttonBack: Button = findViewById((R.id.back))
 
+        buttonBack.setOnClickListener() {
+            setContentView(R.layout.menu)
+        }
     }
 
     fun numberAction(view: View) {
@@ -105,11 +111,32 @@ class MainActivity : AppCompatActivity() {
                 "+/-" -> {
                     result = negativeNumber().toString()
                 }
-                "+" -> {
-                    result = "dwa"
+                "sin" -> {
+                    result = sine().toString()
                 }
-                "-" -> {
-                    result = "trzy"
+                "cos" -> {
+                    result = cosine().toString()
+                }
+                "tan" -> {
+                    result = tangent().toString()
+                }
+                "%" -> {
+                    result = precent().toString()
+                }
+                "ln" -> {
+                    result = naturalLogarithm().toString()
+                }
+                "√" -> {
+                    result = sqrt().toString()
+                }
+                "x²" -> {
+                    result = square().toString()
+                }
+                "log" -> {
+                    result = "log"
+                }
+                "xⁿ" -> {
+                    result = "xⁿ"
                 }
             }
             display.text = result
@@ -211,47 +238,47 @@ class MainActivity : AppCompatActivity() {
 
     private fun sine(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return sin(number)
     }
 
     private fun cosine(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return cos(number)
     }
 
     private fun tangent(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return tan(number)
     }
 
     private fun logarithm(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return number
     }
 
     private fun naturalLogarithm(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return ln(number)
     }
 
     private fun precent(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return number / 100
     }
 
     private fun square(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return number.pow(2)
     }
 
-    private fun element(): Double {
+    private fun sqrt(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return sqrt(number)
     }
 
     private fun expo(): Double {
         val number = digitsOperators()
-        return number * (-1)
+        return sqrt(number)
     }
 //    fun numberAction(view: View) {
 //        display = findViewById(R.id.textView)
