@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                     result = precent().toString()
                 }
                 "ln" -> {
-                    result = naturalLogarithm().toString()
+                    result = naturalLogarithm()
                 }
                 "√" -> {
                     result = sqrt().toString()
@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
                     result = "xⁿ"
                 }
             }
+            canDecimal = false
             display.text = result
         }
     }
@@ -180,8 +181,6 @@ class MainActivity : AppCompatActivity() {
             if (character.isDigit() || character == '.' || character == '-'){ //make decimal
                 currentSign += character
             }
-            println("CURRENT SIGN KURWA")
-            println(currentSign)
         }
         if (currentSign == "."){
             currentSign = "0.0"
@@ -256,9 +255,14 @@ class MainActivity : AppCompatActivity() {
         return number
     }
 
-    private fun naturalLogarithm(): Double {
+    private fun naturalLogarithm(): String {
         val number = digitsOperators()
-        return ln(number)
+        return if (number > 0.0){
+            ln(number).toString()
+        } else {
+            errorFlag = true
+            "Error"
+        }
     }
 
     private fun precent(): Double {

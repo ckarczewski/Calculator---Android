@@ -103,6 +103,7 @@ class SimpleCalc : AppCompatActivity() {
                     result = negativeNumber().toString()
                 }
             }
+            canDecimal = false
             display.text = result
         }
     }
@@ -144,8 +145,6 @@ class SimpleCalc : AppCompatActivity() {
             if (character.isDigit() || character == '.' || character == '-'){ //make decimal
                 currentSign += character
             }
-            println("CURRENT SIGN KURWA")
-            println(currentSign)
         }
         if (currentSign == "."){
             currentSign = "0.0"
