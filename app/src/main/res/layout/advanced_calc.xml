@@ -90,9 +90,14 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/back"
+                style="@style/button_other"
+                android:text="⫷"
+                 />
+
+            <Button
                 android:id="@+id/button17"
                 style="@style/button_other"
-                android:layout_weight="2"
                 android:onClick="clearBtn"
                 android:text="@string/clear"
                 tools:ignore="UsingOnClickInXml" />
@@ -118,7 +123,7 @@
             <Button
                 android:id="@+id/button13"
                 style="@style/button_num"
-                android:text="7" />
+                android:text="@string/seven" />
 
             <Button
                 android:id="@+id/button14"
