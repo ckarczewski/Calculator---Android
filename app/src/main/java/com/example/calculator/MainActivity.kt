@@ -256,11 +256,6 @@ class MainActivity : AppCompatActivity() {
         return tan(number)
     }
 
-    private fun logarithm(): Double {
-        val number = digitsOperators()
-        return number
-    }
-
     private fun naturalLogarithm(): String {
         val number = digitsOperators()
         return if (number > 0.0){
