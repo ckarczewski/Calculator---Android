@@ -11,6 +11,7 @@ class Menu : AppCompatActivity() {
         setContentView(R.layout.menu)
         val buttonSimp: Button = findViewById(R.id.simple_calc)
         val buttonAdv: Button = findViewById(R.id.adv_calc)
+        val buttonInf: Button = findViewById(R.id.info)
 
         buttonSimp.setOnClickListener() {
             val intent = Intent(this, SimpleCalc::class.java)
@@ -20,6 +21,11 @@ class Menu : AppCompatActivity() {
 
         buttonAdv.setOnClickListener() {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        buttonInf.setOnClickListener() {
+            val intent = Intent(this, Info::class.java)
             startActivity(intent)
         }
     }
