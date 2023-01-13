@@ -224,10 +224,11 @@ class MainActivity : AppCompatActivity() {
             }
             "log" -> {
                 if (numberOne > 0 || numberTwo > 0 || numberTwo == 1.0) {
+                    result = log(numberOne,numberTwo)
+                } else {
                     errorFlag = true
                     return "Error"
-                } else {
-                    result = log(numberOne,numberTwo)
+
                 }
 
             }
