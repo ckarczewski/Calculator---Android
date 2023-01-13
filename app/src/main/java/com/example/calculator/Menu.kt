@@ -31,8 +31,8 @@ class Menu : AppCompatActivity() {
             startActivity(intent)
         }
         buttonExit.setOnClickListener() {
-            finish()
-            exitProcess(0)
+            finishAffinity()
+            exitProcess(2)
         }
     }
 }

@@ -210,7 +210,7 @@ class MainActivity : AppCompatActivity() {
             displaySign.text = ""
             numberTwo = digitsOperators()
             display.text = ""
-            display.text = calculateResult()
+            display.text = calculateResult().toBigDecimal().toPlainString()
             numberOneSave = false
             canDecimal = false
         }
@@ -312,12 +312,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun precent(): String {
         val number = digitsOperators()
-        if ((number / 100) < procMax || (number / 100) < procMin) {
-            errorFlag = true
-            return "Error"
-        } else {
-            return (number / 100).toString()
-        }
+        return (number / 100).toBigDecimal().toPlainString()
     }
 
     private fun square(): String {
