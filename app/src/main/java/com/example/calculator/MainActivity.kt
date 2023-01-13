@@ -132,9 +132,6 @@ class MainActivity : AppCompatActivity() {
                 "x²" -> {
                     result = square().toString()
                 }
-                "log" -> {
-                    result = "log"
-                }
             }
             canDecimal = false
             display.text = result
@@ -224,6 +221,15 @@ class MainActivity : AppCompatActivity() {
             }
             "xⁿ" -> {
                 result = numberOne.pow(numberTwo)
+            }
+            "log" -> {
+                if (numberOne > 0 || numberTwo > 0 || numberTwo == 1.0) {
+                    errorFlag = true
+                    return "Error"
+                } else {
+                    result = log(numberOne,numberTwo)
+                }
+
             }
         }
 
