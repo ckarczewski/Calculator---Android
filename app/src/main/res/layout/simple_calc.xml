@@ -23,7 +23,7 @@
                 android:id="@+id/back"
                 style="@style/button_other"
                 android:text="⫷"
-                app:backgroundTint="@color/black"/>
+                android:backgroundTint="@color/black" />
 
 
             <Button
@@ -49,6 +49,7 @@
                 android:id="@+id/button19"
                 style="@style/button_other"
                 android:text="@string/plus_minus"
+                android:backgroundTint="@color/purple_500"
                 tools:ignore="UsingOnClickInXml" />
         </TableRow>
 
