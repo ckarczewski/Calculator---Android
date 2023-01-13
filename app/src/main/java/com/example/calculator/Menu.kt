@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import kotlin.system.exitProcess
 
 class Menu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,7 @@ class Menu : AppCompatActivity() {
         val buttonSimp: Button = findViewById(R.id.simple_calc)
         val buttonAdv: Button = findViewById(R.id.adv_calc)
         val buttonInf: Button = findViewById(R.id.info)
+        val buttonExit: Button = findViewById(R.id.exit)
 
         buttonSimp.setOnClickListener() {
             val intent = Intent(this, SimpleCalc::class.java)
@@ -27,6 +29,10 @@ class Menu : AppCompatActivity() {
         buttonInf.setOnClickListener() {
             val intent = Intent(this, Info::class.java)
             startActivity(intent)
+        }
+        buttonExit.setOnClickListener() {
+            finish()
+            exitProcess(0)
         }
     }
 }
