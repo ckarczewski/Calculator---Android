@@ -225,6 +225,9 @@ class MainActivity : AppCompatActivity() {
             "-" -> {
                 result = numberOne - numberTwo
             }
+            "xⁿ" -> {
+                result = numberOne.pow(numberTwo)
+            }
         }
 
         return result.toString()

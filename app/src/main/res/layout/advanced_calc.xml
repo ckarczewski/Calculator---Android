@@ -21,7 +21,7 @@
 
             <Button
                 android:id="@+id/button28"
-                style="@style/button_other"
+                style="@style/button_operation"
                 android:text="@string/expo"
                 tools:ignore="UsingOnClickInXml" />
 
@@ -50,7 +50,7 @@
 
             <Button
                 android:id="@+id/button24"
-                style="@style/button_other"
+                style="@style/button_operation"
                 android:text="@string/log"
                 tools:ignore="UsingOnClickInXml" />
 
