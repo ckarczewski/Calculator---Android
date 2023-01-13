@@ -127,16 +127,13 @@ class MainActivity : AppCompatActivity() {
                     result = naturalLogarithm()
                 }
                 "√" -> {
-                    result = sqrt().toString()
+                    result = sqrt()
                 }
                 "x²" -> {
                     result = square().toString()
                 }
                 "log" -> {
                     result = "log"
-                }
-                "xⁿ" -> {
-                    result = "xⁿ"
                 }
             }
             canDecimal = false
@@ -278,15 +275,16 @@ class MainActivity : AppCompatActivity() {
         return number.pow(2)
     }
 
-    private fun sqrt(): Double {
+    private fun sqrt(): String {
         val number = digitsOperators()
-        return sqrt(number)
+        return if (number >= 0.0) {
+            sqrt(number).toString()
+        } else {
+            errorFlag = true
+            "Error"
+        }
     }
 
-    private fun expo(): Double {
-        val number = digitsOperators()
-        return sqrt(number)
-    }
 //    fun numberAction(view: View) {
 //        display = findViewById(R.id.textView)
 //        if (view is Button) {
