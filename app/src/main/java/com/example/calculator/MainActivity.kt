@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity() {
     private var clearNumFlag = false
 
     private var errorFlag = false
+    private val maxDouble = Double.MAX_VALUE
+    private val minDouble = maxDouble * (-1.0)
+    private val procMax = Double.MIN_VALUE
+    private val procMin = procMax * (-1)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                     result = sqrt()
                 }
                 "x²" -> {
-                    result = square().toString()
+                    result = square()
                 }
             }
             canDecimal = false
@@ -200,6 +205,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateResult(): String{
         var result = 0.0
+        try {
+            
+        }
         when (signOperator){
             "x" -> {
                 result = numberOne * numberTwo
@@ -223,15 +231,18 @@ class MainActivity : AppCompatActivity() {
                 result = numberOne.pow(numberTwo)
             }
             "log" -> {
-                if (numberOne > 0 || numberTwo > 0 || numberTwo == 1.0) {
-                    result = log(numberOne,numberTwo)
-                } else {
+                if (numberOne < 0 || numberTwo < 0 || numberTwo == 1.0) {
                     errorFlag = true
                     return "Error"
-
+                } else {
+                    result = log(numberOne,numberTwo)
                 }
 
             }
+        }
+        if (result > maxDouble || result < minDouble) {
+            errorFlag = true
+            return "Error"
         }
 
         return result.toString()
@@ -242,24 +253,40 @@ class MainActivity : AppCompatActivity() {
         return number * (-1)
     }
 
-    private fun sine(): Double {
+    private fun sine(): String {
         val number = digitsOperators()
-        return sin(number)
+        if (sin(number)> maxDouble || sin(number) < minDouble) {
+            errorFlag = true
+            return "Error"
+        }
+        return sin(number).toString()
     }
 
-    private fun cosine(): Double {
+    private fun cosine(): String {
         val number = digitsOperators()
-        return cos(number)
+        if (cos(number)> maxDouble || cos(number) < minDouble) {
+            errorFlag = true
+            return "Error"
+        }
+        return cos(number).toString()
     }
 
-    private fun tangent(): Double {
+    private fun tangent(): String {
         val number = digitsOperators()
-        return tan(number)
+        if (tan(number) > maxDouble || tan(number) < minDouble) {
+            errorFlag = true
+            return "Error"
+        }
+        return tan(number).toString()
     }
 
     private fun naturalLogarithm(): String {
         val number = digitsOperators()
         return if (number > 0.0){
+            if (ln(number) > maxDouble || ln(number) < minDouble) {
+                errorFlag = true
+                return "Error"
+            }
             ln(number).toString()
         } else {
             errorFlag = true
@@ -267,176 +294,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun precent(): Double {
+    private fun precent(): String {
         val number = digitsOperators()
-        return number / 100
+        if ((number / 100) < procMax || (number / 100) < procMin) {
+            errorFlag = true
+            return "Error"
+        } else {
+            return (number / 100).toString()
+        }
     }
 
-    private fun square(): Double {
+    private fun square(): String {
         val number = digitsOperators()
-        return number.pow(2)
+        if (number.pow(2) > maxDouble || number.pow(2) < minDouble) {
+            errorFlag = true
+            return "Error"
+        } else {
+            return number.pow(2).toString()
+        }
+
     }
 
     private fun sqrt(): String {
         val number = digitsOperators()
         return if (number >= 0.0) {
+            if (sqrt(number)> maxDouble || sqrt(number) < minDouble) {
+                errorFlag = true
+                return "Error"
+            }
             sqrt(number).toString()
         } else {
             errorFlag = true
             "Error"
         }
     }
-
-//    fun numberAction(view: View) {
-//        display = findViewById(R.id.textView)
-//        if (view is Button) {
-//            if (view.text == "."){
-//                if (canDecimal) { display.append(view.text) }
-//                canDecimal = false
-//            } else {
-//                display.append(view.text)
-//                canOperation = true
-//            }
-//        }
-//    }
-
-//    fun operationAction(view: View) {
-//        display = findViewById(R.id.textView)
-//        if (view is Button && canOperation) {
-//            display.append(view.text)
-////            after add operation sign
-//            canOperation = false
-//            println("zmienilem flage decimal na false")
-//            canDecimal = true
-//        }
-//    }
-
-//    fun clearBtn(view: View) {
-//        display = findViewById(R.id.textView)
-//        val length = display.length()
-//        if (length > 0) {
-//            if (display.text.get(length-1) == '.'){
-//                println("found dot lol !!!")
-//                canDecimal = true
-//            }
-//            display.text = display.text.subSequence(0, length - 1)
-//        }
-//    }
-
-//    fun okBtn(view: View) {
-//        display = findViewById(R.id.textView)
-//
-//        display.text = ""
-//        canDecimal = true
-//        canOperation = false
-//    }
-
-//    fun equalBtn(view: View) {
-//        display = findViewById(R.id.textView)
-//        val length = display.length()
-//        if (length > 0) {
-//            display.text = calculateResult()
-//            canOperation = true
-//            canDecimal = false
-//        }
-//
-//    }
-//log.i
-//    private fun calculateResult(): String{
-//        val digitsOperators = digitsOperators()
-//        if(digitsOperators.isEmpty()) return ""
-//
-//        val timeDivision = timesDivisionCalculate(digitsOperators)
-//        if(timeDivision.isEmpty()) return ""
-//
-//        val result = addSubtractCalculate(timeDivision)
-//        return result.toString()
-//    }
-
-//    private fun addSubtractCalculate(passedList: MutableList<Any>): Float{
-//        var result = 0.0f as Float
-//        if (passedList[0] == '-') {
-//            passedList[1] = passedList[1] as Float * (-1)
-//            passedList.removeAt(0)
-//            result = passedList[0] as Float
-//        } else {
-//            result = passedList[0] as Float
-//        }
-//
-//
-////        var result = passedList[0] as Float
-//        println(result)
-//        println(passedList)
-//        for (i in passedList.indices){
-//            if (passedList[i] is Char && i != passedList.lastIndex){
-//                val operator = passedList[i]
-//                val nextDigit = passedList[i + 1] as Float
-//                if (operator == '+'){
-//                    result += nextDigit
-//                }
-//                if (operator == '-'){
-//                    result -= nextDigit
-//                }
-//            }
-//        }
-//        return result
-//    }
-
-//    private fun timesDivisionCalculate(passedList: MutableList<Any>): MutableList<Any>{
-//        var list = passedList
-//        while (list.contains('x') || list.contains('/')){
-//            list = calcTimeDiv(list)
-//        }
-//        return list
-//    }
-
-//    private fun calcTimeDiv(passedList: MutableList<Any>):MutableList<Any>{
-//        val newList = mutableListOf<Any>()
-//        var restartIndex = passedList.size
-//        println(passedList)
-//        for (i in passedList.indices){
-//            if (passedList[i] is Char && i != passedList.lastIndex && i < restartIndex){
-//                val operator = passedList[i]
-//                val prevDigit = passedList[i - 1] as Float
-//                val nextDigit = passedList[i + 1] as Float
-//                when (operator){
-//                    'x' -> {
-//                        newList.add(prevDigit * nextDigit)
-//                        restartIndex = i + 1
-//                    }
-//                    '/' -> {
-//                        newList.add(prevDigit / nextDigit)
-//                        restartIndex = i + 1
-//                    }else -> {
-//                        newList.add(prevDigit)
-//                        newList.add(operator)
-//                    }
-//                }
-//            }
-//            if (i > restartIndex){
-//                newList.add(passedList[i])
-//            }
-//        }
-//        return newList
-//    }
-
-//    private fun digitsOperators(): MutableList<Any>{
-//        display = findViewById(R.id.textView)
-//        val list = mutableListOf<Any>()
-//        var currentDigit = ""
-//        for(character in display.text){
-//            if (character.isDigit() || character == '.'){ //make decimal
-//                currentDigit += character
-//            } else {
-//                if (currentDigit != ""){
-//                    list.add(currentDigit.toFloat())
-//                }
-//                currentDigit = ""
-//                list.add(character)
-//            }
-//        }
-//        if (currentDigit != "")
-//            list.add(currentDigit.toFloat())
-//        return list
-//    }
 }

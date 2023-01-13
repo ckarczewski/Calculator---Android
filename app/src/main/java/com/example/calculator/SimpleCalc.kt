@@ -27,6 +27,10 @@ class SimpleCalc : AppCompatActivity() {
     private var clearNumFlag = false
 
     private var errorFlag = false
+    private val maxDouble = Double.MAX_VALUE
+    private val minDouble = maxDouble * (-1.0)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class SimpleCalc : AppCompatActivity() {
             val intent = Intent(this, Menu::class.java)
             startActivity(intent)
         }
+
 
     }
 
@@ -190,7 +195,14 @@ class SimpleCalc : AppCompatActivity() {
                 result = numberOne - numberTwo
             }
         }
+        if (result > maxDouble) {
+            errorFlag = true
+            return "Error"
+        } else if (result < minDouble) {
+            errorFlag = true
+            return "Error"
 
+        }
         return result.toString()
     }
 
