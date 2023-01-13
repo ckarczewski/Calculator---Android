@@ -205,9 +205,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateResult(): String{
         var result = 0.0
-        try {
-            
-        }
+       
         when (signOperator){
             "x" -> {
                 result = numberOne * numberTwo
