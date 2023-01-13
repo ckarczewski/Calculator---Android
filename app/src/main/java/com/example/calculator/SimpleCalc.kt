@@ -154,7 +154,11 @@ class SimpleCalc : AppCompatActivity() {
         if (currentSign == "."){
             currentSign = "0.0"
         }
-        number = currentSign.toDouble()
+        try {
+            number = currentSign.toDouble()
+        } catch (e:java.lang.NumberFormatException){
+            number = 0.0
+        }
         return number
     }
     fun equalBtn(view: View) {
@@ -175,26 +179,31 @@ class SimpleCalc : AppCompatActivity() {
 
     private fun calculateResult(): String{
         var result = 0.0
-        when (signOperator){
-            "x" -> {
-                result = numberOne * numberTwo
-            }
-            "/" -> {
-                if (numberTwo == 0.0){
-                    errorFlag = true
-                    return "Error"
-                } else {
-                    result = numberOne / numberTwo
+        try {
+            when (signOperator) {
+                "x" -> {
+                    result = numberOne * numberTwo
                 }
+                "/" -> {
+                    if (numberTwo == 0.0) {
+                        errorFlag = true
+                        return "Error"
+                    } else {
+                        result = numberOne / numberTwo
+                    }
 
+                }
+                "+" -> {
+                    result = numberOne + numberTwo
+                }
+                "-" -> {
+                    result = numberOne - numberTwo
+                }
             }
-            "+" -> {
-                result = numberOne + numberTwo
-            }
-            "-" -> {
-                result = numberOne - numberTwo
-            }
+        } catch (e:java.lang.NumberFormatException){
+            return "Error"
         }
+
         if (result > maxDouble) {
             errorFlag = true
             return "Error"

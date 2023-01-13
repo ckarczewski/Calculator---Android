@@ -109,35 +109,43 @@ class MainActivity : AppCompatActivity() {
             canDecimal = true
             errorFlag = false
         }
+
         var result = ""
         val mainDisplayLength = display.length()
+
         if (view is Button && mainDisplayLength > 0) {
-            when (view.text){
-                "+/-" -> {
-                    result = negativeNumber().toString()
+            try {
+                when (view.text){
+                    "+/-" -> {
+                        result = negativeNumber().toString()
+                    }
+                    "sin" -> {
+                        result = sine().toString()
+                    }
+                    "cos" -> {
+                        result = cosine().toString()
+                    }
+                    "tan" -> {
+                        result = tangent().toString()
+                    }
+                    "%" -> {
+                        result = precent().toString()
+                    }
+                    "ln" -> {
+                        result = naturalLogarithm()
+                    }
+                    "√" -> {
+                        result = sqrt()
+                    }
+                    "x²" -> {
+                        result = square()
+                    }
                 }
-                "sin" -> {
-                    result = sine().toString()
-                }
-                "cos" -> {
-                    result = cosine().toString()
-                }
-                "tan" -> {
-                    result = tangent().toString()
-                }
-                "%" -> {
-                    result = precent().toString()
-                }
-                "ln" -> {
-                    result = naturalLogarithm()
-                }
-                "√" -> {
-                    result = sqrt()
-                }
-                "x²" -> {
-                    result = square()
-                }
+            }catch (e:java.lang.NumberFormatException){
+                errorFlag = true
+                result = "Error"
             }
+
             canDecimal = false
             display.text = result
         }
@@ -184,7 +192,13 @@ class MainActivity : AppCompatActivity() {
         if (currentSign == "."){
             currentSign = "0.0"
         }
-        number = currentSign.toDouble()
+        try {
+            number = currentSign.toDouble()
+        } catch (e:java.lang.NumberFormatException){
+            number = 0.0
+        }
+
+
         return number
     }
     fun equalBtn(view: View) {
@@ -205,39 +219,43 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateResult(): String{
         var result = 0.0
-       
-        when (signOperator){
-            "x" -> {
-                result = numberOne * numberTwo
-            }
-            "/" -> {
-                if (numberTwo == 0.0){
-                    errorFlag = true
-                    return "Error"
-                } else {
-                    result = numberOne / numberTwo
+        try {
+            when (signOperator){
+                "x" -> {
+                    result = numberOne * numberTwo
                 }
+                "/" -> {
+                    if (numberTwo == 0.0){
+                        errorFlag = true
+                        return "Error"
+                    } else {
+                        result = numberOne / numberTwo
+                    }
 
-            }
-            "+" -> {
-                result = numberOne + numberTwo
-            }
-            "-" -> {
-                result = numberOne - numberTwo
-            }
-            "xⁿ" -> {
-                result = numberOne.pow(numberTwo)
-            }
-            "log" -> {
-                if (numberOne < 0 || numberTwo < 0 || numberTwo == 1.0) {
-                    errorFlag = true
-                    return "Error"
-                } else {
-                    result = log(numberOne,numberTwo)
                 }
+                "+" -> {
+                    result = numberOne + numberTwo
+                }
+                "-" -> {
+                    result = numberOne - numberTwo
+                }
+                "xⁿ" -> {
+                    result = numberOne.pow(numberTwo)
+                }
+                "log" -> {
+                    if (numberOne < 0 || numberTwo < 0 || numberTwo == 1.0) {
+                        errorFlag = true
+                        return "Error"
+                    } else {
+                        result = log(numberOne,numberTwo)
+                    }
 
+                }
             }
+        } catch (e:java.lang.NumberFormatException){
+            return "Error"
         }
+
         if (result > maxDouble || result < minDouble) {
             errorFlag = true
             return "Error"
