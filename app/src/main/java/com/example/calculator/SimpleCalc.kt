@@ -170,7 +170,7 @@ class SimpleCalc : AppCompatActivity() {
             displaySign.text = ""
             numberTwo = digitsOperators()
             display.text = ""
-            display.text = calculateResult().toBigDecimal().toPlainString()
+            display.text = calculateResult()
             numberOneSave = false
             canDecimal = false
         }
