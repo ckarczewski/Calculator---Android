@@ -23,6 +23,7 @@
                 android:id="@+id/button28"
                 style="@style/button_operation"
                 android:text="@string/expo"
+                android:backgroundTint="@color/purple_700"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -52,12 +53,14 @@
                 android:id="@+id/button24"
                 style="@style/button_operation"
                 android:text="@string/log"
+                android:backgroundTint="@color/purple_700"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/button23"
                 style="@style/button_other"
                 android:text="@string/precent"
+                android:backgroundTint="@color/purple_700"
                 tools:ignore="UsingOnClickInXml" />
         </TableRow>
 
@@ -93,6 +96,7 @@
                 android:id="@+id/back"
                 style="@style/button_other"
                 android:text="⫷"
+                android:backgroundTint="@color/black"
                  />
 
             <Button
@@ -100,6 +104,8 @@
                 style="@style/button_other"
                 android:onClick="clearBtn"
                 android:text="@string/clear"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -107,12 +113,15 @@
                 style="@style/button_num"
                 android:onClick="okBtn"
                 android:text="@string/ok"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/button19"
                 style="@style/button_other"
                 android:text="@string/plus_minus"
+                android:backgroundTint="@color/purple_500"
                 tools:ignore="UsingOnClickInXml" />
         </TableRow>
 
@@ -210,6 +219,7 @@
                 style="@style/button_operation"
                 android:onClick="equalBtn"
                 android:text="@string/equals"
+                android:backgroundTint="@color/grey_2"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button

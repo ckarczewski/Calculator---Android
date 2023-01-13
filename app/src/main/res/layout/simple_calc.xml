@@ -22,7 +22,9 @@
             <Button
                 android:id="@+id/back"
                 style="@style/button_other"
-                android:text="⫷"/>
+                android:text="⫷"
+                app:backgroundTint="@color/black"/>
+
 
             <Button
                 android:id="@+id/button17"
@@ -30,6 +32,8 @@
                 android:layout_weight="1"
                 android:onClick="clearBtn"
                 android:text="@string/clear"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -37,6 +41,8 @@
                 style="@style/button_num"
                 android:onClick="okBtn"
                 android:text="@string/ok"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -140,6 +146,7 @@
                 style="@style/button_operation"
                 android:onClick="equalBtn"
                 android:text="@string/equals"
+                android:backgroundTint="@color/grey_2"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button

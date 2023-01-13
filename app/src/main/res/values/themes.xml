@@ -20,6 +20,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:onClick">numberAction</item>
+        <item name="android:backgroundTint">@color/teal_700</item>
     </style>
 
     <style name="button_operation">
@@ -28,6 +29,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:onClick">operationAction</item>
+        <item name="android:backgroundTint">@color/purple_500</item>
     </style>
 
     <style name="button_other">
@@ -36,5 +38,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:onClick">operationSpecial</item>
+        <item name="android:backgroundTint">@color/purple_700</item>
     </style>
 </resources>

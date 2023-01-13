@@ -25,6 +25,7 @@
                 style="@style/button_other"
                 android:textSize="18sp"
                 android:text="⫷"
+                android:backgroundTint="@color/black"
                 />
 
             <Button
@@ -33,6 +34,8 @@
                 android:textSize="18sp"
                 android:onClick="clearBtn"
                 android:text="@string/clear"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -41,6 +44,8 @@
                 android:textSize="18sp"
                 android:onClick="okBtn"
                 android:text="@string/ok"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/grey"
                 tools:ignore="UsingOnClickInXml" />
 
 
@@ -56,6 +61,7 @@
                 style="@style/button_operation"
                 android:textSize="18sp"
                 android:text="@string/expo"
+                android:backgroundTint="@color/purple_700"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -77,6 +83,7 @@
                 style="@style/button_operation"
                 android:textSize="18sp"
                 android:text="@string/log"
+                android:backgroundTint="@color/purple_700"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -224,6 +231,7 @@
                 android:textSize="18sp"
                 android:onClick="equalBtn"
                 android:text="@string/equals"
+                android:backgroundTint="@color/grey_2"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
