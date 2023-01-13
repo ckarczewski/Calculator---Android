@@ -240,7 +240,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:freezesText="true"/>
+        android:freezesText="true"
+        android:maxLength="10"/>
 
     <TextView
         android:id="@+id/textView2"
